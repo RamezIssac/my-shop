@@ -20,6 +20,7 @@ from erp_framework.admin.admin import erp_admin_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('erp/', erp_admin_site.urls
+
+    path('', erp_admin_site.urls
          )
 ]

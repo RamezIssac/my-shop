@@ -19,6 +19,7 @@ class Product(models.Model):
 class Sale(models.Model):
     number = models.CharField(max_length=100, verbose_name='Sale Number')
     date = models.DateTimeField()
+    notes = models.TextField(blank=True, null=True)
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()

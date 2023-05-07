@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'erp_framework',
 
     'sales',
+    'expense',
 
     'crequest',
     'crispy_forms',
@@ -140,3 +141,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATIC_ROOT = BASE_DIR / 'static'
 
 SLICK_REPORTING_FORM_MEDIA = {}
+
+SLICK_REPORTING_DEFAULT_CHARTS_ENGINE = 'chartsjs'

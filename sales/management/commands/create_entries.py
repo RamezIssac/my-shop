@@ -2,10 +2,13 @@ import datetime
 import random
 from datetime import timedelta
 
-from django.core.management.base import BaseCommand, CommandError
-from django.utils.timezone import now
+from django.contrib.auth import get_user_model
+from django.core.management.base import BaseCommand
 
+from expense.models import Expense, ExpenseTransaction
 from sales.models import Client, Product, Sale
+
+User = get_user_model()
 
 
 def date_range(start_date, end_date):
@@ -18,6 +21,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # create clients
+        models_list = [
+            Client,
+            Product,
+
+        ]
+        User.objects.filter(is_superuser=False).delete()
+        for i in range(10):
+            User.objects.create_user(username=f'user {i}', password='password')
+
+        users_id = list(User.objects.values_list('id', flat=True))
+
         for i in range(1, 10):
             Client.objects.create(name=f"Client {i}")
         clients_ids = list(Client.objects.values_list("pk", flat=True))
@@ -25,6 +39,10 @@ class Command(BaseCommand):
         for i in range(1, 10):
             Product.objects.create(name=f"Product {i}")
         products_ids = list(Product.objects.values_list("pk", flat=True))
+
+        for i in range(1, 10):
+            Expense.objects.create(name=f"Expense {i}")
+        expense_ids = list(Expense.objects.values_list("pk", flat=True))
 
         # create sales, 10 per day from start of the year
 
@@ -40,6 +58,12 @@ class Command(BaseCommand):
                     price=random.randint(1, 100),
                     date=date,
                     number=f"Sale {date.strftime('%Y-%m-%d')} #{i}",
+                )
+                ExpenseTransaction.objects.create(
+                    expense_id=random.choice(expense_ids),
+                    value=random.randint(1, 100),
+                    date=date,
+                    number=f"Expense {date.strftime('%Y-%m-%d')} #{i}",
                 )
 
         self.stdout.write(self.style.SUCCESS("Entries Created Successfully"))
