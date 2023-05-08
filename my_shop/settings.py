@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sales',
     'expense',
     "general_reports",
+    "purchase",
 
     'crequest',
     'crispy_forms',
