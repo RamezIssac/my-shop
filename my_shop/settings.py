@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -72,7 +72,7 @@ ROOT_URLCONF = 'my_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],  # add this line
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,3 +143,15 @@ STATIC_ROOT = BASE_DIR / 'static'
 SLICK_REPORTING_FORM_MEDIA = {}
 
 SLICK_REPORTING_DEFAULT_CHARTS_ENGINE = 'chartsjs'
+
+# RA_ADMIN_INDEX_PAGE = "admin/custom_index.html"
+# RA_ADMIN_INDEX_TITLE = "My Shop"
+JAZZMIN_SETTINGS = {
+    'site_brand': 'My Shop ERP System',
+}
+
+ERP_FRAMEWORK_SETTINGS = {
+    'index_title': 'My Shop dashboard',
+    'index_template': 'admin/custom_index.html',
+
+}
