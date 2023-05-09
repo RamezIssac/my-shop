@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-^muzt342(d0_ktu884@4xa#63q6pu9xb70*097xjjqnm1^1(4%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["django-erp-framework.com", "my-shop.django-erp-framework.com"]
 
 # Application definition
 
