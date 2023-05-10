@@ -24,16 +24,15 @@ class Command(BaseCommand):
         models_list = [
             Client,
             Product,
-
         ]
         User.objects.filter(is_superuser=False).delete()
         for i in range(10):
-            User.objects.create_user(username=f'user {i}', password='password')
+            User.objects.create_user(username=f"user {i}", password="password")
 
-        users_id = list(User.objects.values_list('id', flat=True))
+        users_id = list(User.objects.values_list("id", flat=True))
 
         for i in range(1, 10):
-            Client.objects.create(name=f"Client {i}")
+            Client.objects.create(name=f"Client {i}", owner_id=random.choice(users_id))
         clients_ids = list(Client.objects.values_list("pk", flat=True))
         # create products
         for i in range(1, 10):

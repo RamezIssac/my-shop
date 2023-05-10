@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "erp_framework",
     "sales",
     "expense",
-    "general_reports",
+    # "general_reports",
     "purchase",
     "crequest",
     "crispy_forms",
@@ -63,6 +63,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # crequest
+    "crequest.middleware.CrequestMiddleware",
 ]
 
 ROOT_URLCONF = "my_shop.urls"

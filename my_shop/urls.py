@@ -16,11 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from erp_framework.admin.admin import erp_admin_site
+from erp_framework.sites import erp_admin_site
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-
-    path('', erp_admin_site.urls
-         )
-]
+urlpatterns = [path("admin/", admin.site.urls), path("", erp_admin_site.urls)]
