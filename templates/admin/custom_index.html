@@ -8,15 +8,26 @@
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_html_panel ExpensesTotalStatement %}
     </div>
-<div class="col-sm-6">
+    <div class="col-sm-6">
         {% get_report base_model='profitability' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
         {% get_html_panel profitabilityreportmonthly no_table=True data_extra_param="time_series_pattern=monthly" data_chart_id="total-column" data_display_chart_selector=False %}
+        <div class="">
+            {% get_report base_model='sale' report_slug='salelistreportview' as salelistreportview %}
+            {% get_html_panel salelistreportview no_chart=True date_theme="last_week" %}
+        </div>
+
     </div>
+
+    <div class="col-sm-6">
+
+    </div>
+
+
 {% endblock %}
 
 {% block extrajs %}
     {{ block.super }}
-{#    <script src="{% static 'limitless_admin/global_assets/js/demo_charts/pages/dashboard/light/bars.js' %}"></script>#}
+    {#    <script src="{% static 'limitless_admin/global_assets/js/demo_charts/pages/dashboard/light/bars.js' %}"></script>#}
 
     <script>
         function product_total_series_daily(data, $elem) {

@@ -14,7 +14,15 @@ class SaleListReportView(ReportView):
     report_model = Sale
     base_model = Sale
     report_title = "Sales List"
-    columns = ["number", "date", "client", "product", "quantity", "price", "value"]
+    columns = [
+        "number",
+        "date",
+        ("client__name", {"verbose_name": "Client Name"}),
+        "product__name",
+        "quantity",
+        "price",
+        ("value", {"is_summable": True}),
+    ]
 
 
 @register_report_view
@@ -114,9 +122,6 @@ class PercentageToTotal(SlickReportField):
     @classmethod
     def get_time_series_field_verbose_name(cls, date_period, index, dates, pattern):
         return "%"
-        # return super().get_time_series_field_verbose_name(
-        #     date_period, index, dates, pattern
-        # )
 
     def final_calculation(self, debit, credit, dep_dict):
         try:
