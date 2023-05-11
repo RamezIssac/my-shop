@@ -4,11 +4,14 @@
 {% block content %}
 
 
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_html_panel ExpensesTotalStatement %}
     </div>
-
+<div class="col-sm-6">
+        {% get_report base_model='profitability' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
+        {% get_html_panel profitabilityreportmonthly no_table=True data_extra_param="time_series_pattern=monthly" data_chart_id="total-column" data_display_chart_selector=False %}
+    </div>
 {% endblock %}
 
 {% block extrajs %}

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "erp_framework",
     "sales",
     "expense",
-    # "general_reports",
+    "general_reports",
     "purchase",
     "crequest",
     "crispy_forms",

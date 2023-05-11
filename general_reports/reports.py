@@ -69,8 +69,10 @@ class ProfitabilityReportMonthly(ReportView):
             "title_source": "type",
         },
         {
+            "id": "total-column",
             "type": "column",
-            "data_source": ["value"],  # todo change / address , unnatural data source
+            "data_source": ["value"],
+            "title": _("Profitability Report Monthly Total"),
             "title_source": "type",
             "plot_total": True,
         },
