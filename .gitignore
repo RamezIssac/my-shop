@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 
 my_shop/live_settings.py
+collected_static/
