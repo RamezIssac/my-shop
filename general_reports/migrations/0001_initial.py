@@ -46,10 +46,10 @@ class Migration(migrations.Migration):
         ),
         migrations.RunSQL(
             """create or replace view profitability_view as
-            select "expensetransaction" as type, date, value
+            select 'expensetransaction' as type, date, value
             from expense_expensetransaction
             union all
-            select "saletransaction", date, value
+            select 'saletransaction', date, value
             from sales_sale;""",
             reverse_sql="""drop view profitability_view;""",
         ),
