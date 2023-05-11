@@ -4,33 +4,53 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
+        ("sales", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Profitability',
+            name="Profitability",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField(blank=True, null=True, verbose_name='date')),
-                ('type', models.CharField(default='sales', max_length=20, verbose_name='type')),
-                ('value', models.DecimalField(decimal_places=2, default=0, max_digits=19, verbose_name='Value')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateField(blank=True, null=True, verbose_name="date")),
+                (
+                    "type",
+                    models.CharField(
+                        default="sales", max_length=20, verbose_name="type"
+                    ),
+                ),
+                (
+                    "value",
+                    models.DecimalField(
+                        decimal_places=2, default=0, max_digits=19, verbose_name="Value"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Profitability',
-                'verbose_name_plural': 'Profitability',
-                'db_table': 'profitability_view',
-                'managed': False,
+                "verbose_name": "Profitability",
+                "verbose_name_plural": "Profitability",
+                "db_table": "profitability_view",
+                "managed": False,
             },
         ),
-
-        migrations.RunSQL("""create or replace view profitability_view as
+        migrations.RunSQL(
+            """create or replace view profitability_view as
             select "expensetransaction" as type, date, value
             from expense_expensetransaction
             union all
             select "saletransaction", date, value
-            from sales_sale;""", reverse_sql="""drop view profitability_view;""")
+            from sales_sale;""",
+            reverse_sql="""drop view profitability_view;""",
+        ),
     ]

@@ -1,5 +1,7 @@
 Django>=4.2,<4.3
 django-jazzmin
-django-erp-framework
+# django-erp-framework
 crispy_bootstrap4
-django-slick-reporting
+# django-slick-reporting
+-e git+https://github.com/RamezIssac/django-erp-framework.git@develop#egg=django-erp-framework
+-e git+https://github.com/ra-systems/django-slick-reporting.git@develop#egg=django-slick-reporting
