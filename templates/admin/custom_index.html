@@ -30,6 +30,11 @@
     {#    <script src="{% static 'limitless_admin/global_assets/js/demo_charts/pages/dashboard/light/bars.js' %}"></script>#}
 
     <script>
+        $.slick_reporting.highcharts.defaults.credits = {
+            text: 'Django ERP Framework',
+            href: 'https://github.com/RamezIssac/django-erp-framework'
+        }
+
         function product_total_series_daily(data, $elem) {
             {#            var MyDate = new Date();#}
             {#            var dateString = MyDate.getFullYear() + ''+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '' + ('0' + MyDate.getDate()).slice(-2) ;#}
