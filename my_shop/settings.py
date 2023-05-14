@@ -148,6 +148,7 @@ SLICK_REPORTING_DEFAULT_CHARTS_ENGINE = "highcharts"
 # RA_ADMIN_INDEX_TITLE = "My Shop"
 JAZZMIN_SETTINGS = {
     "site_brand": "My Shop ERP System",
+    "welcome_sign": "Welcome to Django ERP framework demo site. \n Use `test `testuser123` to login",
 }
 
 ERP_FRAMEWORK_SETTINGS = {
