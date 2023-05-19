@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Expense(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name=_("Expense Name"))
 
     class Meta:
         verbose_name = _("Expense")
