@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                     drop view if exists  product_in_out_view; create view product_in_out_view as
                     select id, date,  'sale' as doc_type, product_id,quantity , price, value from sales_sale
                     union all
-                    select id , date, 'purchase' as doc_type , quantity , product_id, price, value from purchase_purchase 
+                    select id , date, 'purchase' as doc_type , product_id, quantity , price, value from purchase_purchase 
                     """
         ),
     ]

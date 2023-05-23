@@ -45,6 +45,13 @@ class ProductAveragePriceMonthly(ProductAveragePrice):
     ]
 
 
+@doc_type_registry.register
+class SalesTransaction(DocType):
+    name = "purchase"
+    verbose_name = _("Purchase")
+    plus_side = (Product,)
+
+
 @register_report_view
 class ProductMovementStatement(ReportView):
     report_title = _("Product Movement Statement")
@@ -55,7 +62,7 @@ class ProductMovementStatement(ReportView):
 
     doc_type_plus_list = ["purchase"]
     doc_type_minus_list = ["sale"]
-    # group_by = "doc_type"
+    # doc_type_field_name = "doc_type"
 
     columns = [
         "name",
@@ -67,14 +74,6 @@ class ProductMovementStatement(ReportView):
     ]
 
     chart_settings = [
-        # Chart(
-        #     _("Quantity"),
-        #     Chart.PIE,
-        #     ["__total_quantity__"],
-        #     ["name"],
-        #     # plot_total=True,
-        #     # engine="highcharts",
-        # ),
         Chart(
             _("Quantity Pie Chart"),
             Chart.PIE,

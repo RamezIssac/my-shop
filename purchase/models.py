@@ -27,12 +27,16 @@ class Purchase(models.Model):
         self.value = self.quantity * self.price
         super().save(*args, **kwargs)
 
+    class Meta:
+        verbose_name = _("Purchase")
+        verbose_name_plural = _("Purchases")
+
 
 class ProductInOutDBView(models.Model):
     date = models.DateTimeField(verbose_name=_("Date"))
     doc_type = models.CharField(max_length=20, verbose_name=_("Document Type"))
     product = models.ForeignKey(
-        "sales.Product", on_delete=models.CASCADE, verbose_name=_("Product")
+        "sales.Product", on_delete=models.DO_NOTHING, verbose_name=_("Product")
     )
     quantity = models.IntegerField(verbose_name=_("Quantity"))
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name=_("Price"))
