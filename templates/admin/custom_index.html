@@ -7,6 +7,9 @@
     <div class="col-sm-6">
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_html_panel ExpensesTotalStatement %}
+
+        {% get_report base_model='product' report_slug='productmovementstatement' as productmovementstatement %}
+        {% get_html_panel productmovementstatement no_chart=True date_theme="last_week" data_display_chart_selector=False %}
     </div>
     <div class="col-sm-6">
         {% get_report base_model='profitability' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
@@ -19,7 +22,6 @@
     </div>
 
     <div class="col-sm-6">
-
     </div>
 
 

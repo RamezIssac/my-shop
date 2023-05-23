@@ -162,23 +162,23 @@ class TotalProductSalesTimeSeriesWithPercentage(ReportView):
     chart_settings = [
         {
             "type": "column",
-            "data_source": ["value"],
-            "title_source": "type",
+            "data_source": ["total_value"],
+            "title_source": ["name"],
         },
         {
             "title": "Total",
-            "engine_name": "chartsjs",
+            # "engine_name": "chartsjs",
             "type": "column",
-            "data_source": ["value"],
-            "title_source": "type",
+            "data_source": ["total_value"],
+            "title_source": ["name"],
             "plot_total": True,
         },
         {
             "title": "Total",
-            "engine_name": "chartsjs",
+            # "engine_name": "chartsjs",
             "type": "pie",
-            "data_source": ["value"],
-            "title_source": "type",
+            "data_source": ["total_value"],
+            "title_source": ["name"],
             "plot_total": True,
         },
     ]

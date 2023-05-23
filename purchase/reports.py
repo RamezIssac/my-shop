@@ -27,6 +27,7 @@ class ProductAveragePrice(ReportView):
 
 @register_report_view
 class ProductAveragePriceMonthly(ProductAveragePrice):
+    report_title = _("Product Average Price [Time Series selector]")
     time_series_selector = True
     time_series_selector_default = "monthly"
 
@@ -75,12 +76,9 @@ class ProductMovementStatement(ReportView):
         #     # engine="highcharts",
         # ),
         Chart(
-            _("Quantity"),
+            _("Quantity Pie Chart"),
             Chart.PIE,
             ["__total_quantity__"],
             ["name"],
-            # plot_total=True,
-            engine="chartsjs",
-            # engine_name="chartsjs",
         ),
     ]
