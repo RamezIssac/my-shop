@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.RunSQL(
-            """create or replace view profitability_view as
+            """drop view if exists profitability_view; create view profitability_view as
             select 'expensetransaction' as type, date, value
             from expense_expensetransaction
             union all
