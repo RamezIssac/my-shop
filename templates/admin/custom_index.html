@@ -19,6 +19,47 @@
             {% get_html_panel salelistreportview no_chart=True date_theme="last_week" %}
         </div>
 
+        <div class="customize-js">
+            <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title">Custom Handling for the report data</h5>
+
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">You can use the <code>data-success-callback</code> attribute to handle the
+                        data
+                        returned from the server. The callback function will be called with two arguments, the first
+                        one
+                        is the data returned from the server and the second one is the jquery object of the element
+                        <code>[data-report-widget]</code> that the report is attached to.</p>
+                    <p class="card-text">The following example shows how to use the callback function to display the
+                        data
+                        returned from the server in a <code>pre</code> tag.</p>
+
+
+                    {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
+                    <div data-report-widget
+                         data-report-url="{{ ExpensesTotalStatement.get_url }}"
+                         data-extra-params=""
+                         data-success-callback="custom_js_callback"
+                         data-chart-id=""
+                         data-display-chart-selector="true"
+                    >
+                        <code>
+                    <pre>
+
+                    </pre>
+                        </code>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div class="col-sm-6">
@@ -29,9 +70,18 @@
 
 {% block extrajs %}
     {{ block.super }}
-    {#    <script src="{% static 'limitless_admin/global_assets/js/demo_charts/pages/dashboard/light/bars.js' %}"></script>#}
+
 
     <script>
+        function custom_js_callback(data, $elem) {
+            // data is the json response from the server
+            // $elem is the jquery object of the element `[data-report-widget]` that the report is attached to.
+
+            console.log(data);
+            console.log($elem);
+            $elem.find('pre').text(JSON.stringify(data, null, 4));
+        }
+
         $.slick_reporting.highcharts.defaults.credits = {
             text: 'Django ERP Framework',
             href: 'https://github.com/RamezIssac/django-erp-framework'
