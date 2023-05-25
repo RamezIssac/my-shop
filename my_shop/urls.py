@@ -18,4 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from erp_framework.sites import erp_admin_site
 
-urlpatterns = [path("admin/", admin.site.urls), path("", erp_admin_site.urls)]
+from general_reports.views import FrontEdnDashboard
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path(
+        "front-end-dashboard/", FrontEdnDashboard.as_view(), name="front-end-dashboard"
+    ),
+    path("", erp_admin_site.urls),
+]

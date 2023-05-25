@@ -150,6 +150,14 @@ SLICK_REPORTING_DEFAULT_CHARTS_ENGINE = "highcharts"
 JAZZMIN_SETTINGS = {
     "site_brand": "My Shop ERP System",
     "welcome_sign": "Welcome to Django ERP framework demo site. \n Use Username:`test` Password:`testuser123` to login",
+    # Links to put along the top menu
+    "topmenu_links": [
+        {
+            "name": "Front end dashboard",
+            "url": "/front-end-dashboard",
+            "new_window": True,
+        },
+    ],
 }
 
 ERP_FRAMEWORK_SETTINGS = {
