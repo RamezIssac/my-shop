@@ -113,10 +113,10 @@
                 chartArry.push(day)
             }
             $('.todaySales').text(chartArry.slice(-1)[0]);
-            var avg = $.ra.smartParseFloat(weekTotal / 7).toFixed(0);
+            var avg = $.erp_framework.smartParseFloat(weekTotal / 7).toFixed(0);
             $('.product_total_series_daily').empty();
-            {#$.ra.d3.barChart('.product_total_series_daily', chartArry, 100, true, 'elastic', 1200, 50, "rgb(92, 107, 192)", salesTooltip);#}
-            $('.weekTotal').text($.ra.smartParseFloat(weekTotal));
+            {#$.erp_framework.d3.barChart('.product_total_series_daily', chartArry, 100, true, 'elastic', 1200, 50, "rgb(92, 107, 192)", salesTooltip);#}
+            $('.weekTotal').text($.erp_framework.smartParseFloat(weekTotal));
             $('.weekAvg').text(avg);
             {#unblockDiv($elem);#}
         }
