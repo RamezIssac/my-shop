@@ -3,9 +3,8 @@ from django.utils.translation import gettext_lazy as _
 
 from erp_framework.reporting.registry import register_report_view
 from erp_framework.reporting.views import ReportView
-from slick_reporting.fields import SlickReportField
+from slick_reporting.fields import SlickReportField, TotalReportField
 
-# Create your views here.
 from .models import Sale, Product
 
 
@@ -181,4 +180,39 @@ class TotalProductSalesTimeSeriesWithPercentage(ReportView):
             "title_source": ["name"],
             "plot_total": True,
         },
+    ]
+
+
+class CustomCrossTabTotalField(TotalReportField):
+    # Customizing how the verbose names are constructed
+    # if not set, the verbose name will display the id of the crosstab field,
+    # and the remainder column will be called "The remainder"
+
+    @classmethod
+    def get_crosstab_field_verbose_name(cls, model, id):
+        from .models import Client
+
+        if id == "----":
+            return _("Rest of clients")
+        name = Client.objects.get(pk=id).name
+        return f"{cls.verbose_name} {name}"
+
+
+@register_report_view
+class ProductClientSalesCrossTab(ReportView):
+    report_model = Sale
+    base_model = Product
+
+    report_title = "Product Client Sales Cross Tab"
+
+    group_by = "product"
+
+    crosstab_model = "client"
+    crosstab_columns = ["__total__"]
+
+    with_type = False
+
+    columns = [
+        "name",
+        "__crosstab__",
     ]

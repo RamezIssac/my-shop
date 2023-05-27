@@ -10,6 +10,10 @@
 
         {% get_report base_model='product' report_slug='productmovementstatement' as productmovementstatement %}
         {% get_html_panel productmovementstatement no_chart=True date_theme="last_week" data_display_chart_selector=False %}
+
+        {% get_report base_model='product' report_slug='ProductClientSalesCrossTab' as ProductClientSalesCrossTab %}
+        {% get_html_panel ProductClientSalesCrossTab data_extra_param="client_id=1&client_id=2&crosstab_compute_remainder=on"  %}
+
     </div>
     <div class="col-sm-6">
         {% get_report base_model='profitability' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
