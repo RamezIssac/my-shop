@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Purchase
-from erp_framework.admin.admin import erp_admin_site
+from erp_framework.sites import erp_admin_site
 
 
 class PurchaseAdmin(admin.ModelAdmin):

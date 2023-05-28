@@ -1,5 +1,5 @@
 from django.contrib import admin
-from erp_framework.admin.admin import erp_admin_site
+from erp_framework.sites import erp_admin_site
 
 from .models import Expense, ExpenseTransaction
 
