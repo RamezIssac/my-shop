@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "request",
     "erp_framework",
     "sales",
     "expense",
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "request.middleware.RequestMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # crequest
@@ -166,3 +168,5 @@ ERP_FRAMEWORK_SETTINGS = {
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index", current_app="erp_framework_admin")
+
+REQUEST_BASE_URL = "https://my-shop.django-erp-framrwork.com"
