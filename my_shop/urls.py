@@ -25,5 +25,6 @@ urlpatterns = [
     path(
         "front-end-dashboard/", FrontEdnDashboard.as_view(), name="front-end-dashboard"
     ),
+    path("dashboard/", FrontEdnDashboard.as_view(), name="front-end-dashboard"),
     path("", erp_admin_site.urls),
 ]

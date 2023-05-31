@@ -207,7 +207,7 @@ class ProductClientSalesCrossTab(ReportView):
 
     group_by = "product"
 
-    crosstab_model = "client"
+    crosstab_field = "client"
     crosstab_columns = ["__total__"]
 
     with_type = False

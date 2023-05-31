@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "expense",
     "general_reports",
     "purchase",
+    "request_analytics",
     "crequest",
     "crispy_forms",
     "crispy_bootstrap4",
