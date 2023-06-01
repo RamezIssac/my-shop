@@ -7,7 +7,7 @@
     <title>Sample Page</title>
 </head>
 <body>
-        <a href="{% url "erp_admin:index" %}"> Go to main site </a>
+        <a href="{% url "erp_framework:index" %}"> Go to main site </a>
 
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_html_panel ExpensesTotalStatement %}

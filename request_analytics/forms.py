@@ -2,7 +2,7 @@ import datetime
 from django import forms
 from django.db.models import Q
 from request.utils import HTTP_STATUS_CODES
-from slick_reporting.form_factory import BaseReportForm
+from slick_reporting.forms import BaseReportForm
 
 
 class RequestLogForm(BaseReportForm, forms.Form):

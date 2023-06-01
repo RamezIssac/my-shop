@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "tabular_permissions",
     "erp_framework.admin.jazzmin_integration",
     "erp_framework.admin",
-    "erp_framework.activity",
+    # "erp_framework.activity",
     "erp_framework.reporting",
     "slick_reporting",
     "jazzmin",
@@ -166,6 +166,7 @@ JAZZMIN_SETTINGS = {
 ERP_FRAMEWORK_SETTINGS = {
     "index_title": "My Shop dashboard",
     "index_template": "admin/custom_index.html",
+    "report_base_template": "request_analytics/base.html",
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index", current_app="erp_framework_admin")
