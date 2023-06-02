@@ -11,7 +11,6 @@ from .models import Sale, Product
 @register_report_view
 class SaleListReportView(ReportView):
     report_model = Sale
-    base_model = Sale
     report_title = "Sales List"
     columns = [
         "number",
@@ -39,6 +38,7 @@ class TotalProductSales(ReportView):
     group_by = "product"
 
     # Columns to display ,
+    with_type = False
     columns = [
         "name",
         SlickReportField.create(Sum, "value", verbose_name="Total Value"),
@@ -58,6 +58,8 @@ class TotalProductSalesTimeSeries(ReportView):
 
     # the field to use for the group by
     group_by = "product"
+
+    with_type = False
 
     # Columns to display ,
     columns = [
@@ -123,6 +125,8 @@ class PercentageToTotal(SlickReportField):
         return "%"
 
     def final_calculation(self, debit, credit, dep_dict):
+        debit = debit or 0
+        credit = credit or 0
         try:
             return round((dep_dict.get("total_value", 0) / (debit - credit)) * 100, 2)
         except ZeroDivisionError:
@@ -132,7 +136,7 @@ class PercentageToTotal(SlickReportField):
 @register_report_view
 class TotalProductSalesTimeSeriesWithPercentage(ReportView):
     report_model = Sale
-    base_model = Product
+    # base_model = Product
 
     # the field to use for the date
     date_field = "date"
