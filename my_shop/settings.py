@@ -167,6 +167,7 @@ ERP_FRAMEWORK_SETTINGS = {
     "index_title": "My Shop dashboard",
     "index_template": "admin/custom_index.html",
     # "report_base_template": "request_analytics/base.html",
+    "admin_base_site_template": "request_analytics/base.html",
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index", current_app="erp_framework_admin")

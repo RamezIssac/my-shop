@@ -15,7 +15,6 @@ from .models import Purchase, ProductInOutDBView
 class ProductAveragePrice(ReportView):
     report_title = _("Product Average Price")
     report_model = Purchase
-    base_model = Product
 
     group_by = "product"
 

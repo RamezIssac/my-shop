@@ -10,10 +10,10 @@
         <a href="{% url "erp_framework:index" %}"> Go to main site </a>
 
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
-        {% get_html_panel ExpensesTotalStatement %}
+        {% get_widget ExpensesTotalStatement %}
 
         {% get_report base_model='purchase' report_slug='productmovementstatement' as productmovementstatement %}
-        {% get_html_panel productmovementstatement no_chart=True date_theme="last_week" data_display_chart_selector=False %}
+        {% get_widget productmovementstatement display_chart=True date_theme="last_week" display_chart_selector=False %}
 
 
 </body>

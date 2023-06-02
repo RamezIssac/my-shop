@@ -149,38 +149,6 @@ class ExpenseMovementDaily2(ReportView):
     columns = ["__time_series__", "__total__"]
     doc_type_field_name = "type"
 
-    form_settings = {
-        "default": True,
-        "group_by": "treasury",
-        "aggregate_on": "expense",
-        "group_page_title": _("Expenses Daily Movement"),
-        "details_page_title": _("Expense Daily Movement"),
-        "time_series_pattern": "daily",
-        "time_series_scope": "both",
-        "group_time_series_display": ["__total__"],
-        "time_series_display": ["__total__"],
-        "details_columns": ["treasury__slug", "treasury__title", "__total__"],
-        "details_column_order": [
-            "treasury__slug",
-            "treasury__title",
-            "__time_series__",
-            "__total__",
-        ],
-        "group_columns": ["slug", "title", "__total__"],
-        "group_column_order": [
-            "treasury__slug",
-            "treasury__title",
-            "__time_series__",
-            "__total__",
-        ],
-        "group_column_names": {
-            "__total__": _("total expense movement"),
-        },
-        "time_series_TS_name": _("in"),
-        "group_time_series_column_names": {
-            "__total__": _("movement"),
-        },
-    }
     chart_settings = [
         {
             "id": "total_movement_bar",
