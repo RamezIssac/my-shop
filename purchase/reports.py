@@ -11,7 +11,7 @@ from sales.models import Product
 from .models import Purchase, ProductInOutDBView
 
 
-@register_report_view
+@register_report_view()
 class ProductAveragePrice(ReportView):
     report_title = _("Product Average Price")
     report_model = Purchase

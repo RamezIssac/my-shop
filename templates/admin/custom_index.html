@@ -45,7 +45,7 @@
 
                     {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
                     <div data-report-widget
-                         data-report-url="{{ ExpensesTotalStatement.get_url }}"
+                         data-report-url="{% get_report_url ExpensesTotalStatement %}"
                          data-extra-params=""
                          data-success-callback="custom_js_callback"
                          data-chart-id=""

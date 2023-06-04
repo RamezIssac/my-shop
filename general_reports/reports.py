@@ -25,6 +25,7 @@ class ExpenseTransaction(DocType):
 
 @register_report_view
 class ProfitabilityReport(ReportView):
+    date_field = "date"
     report_title = _("Total Profitability Report")
     report_model = Profitability  # None #ExpenseReportModel
     base_model = Profitability

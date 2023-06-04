@@ -22,9 +22,11 @@ from erp_framework.sites import erp_admin_site
 
 from general_reports.views import FrontEdnDashboard
 from request_analytics.views import Dashboard
+from request_analytics.sites import requests_dashboard
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("requests-dashboard/", requests_dashboard.urls),
     path(
         "front-end-dashboard/", FrontEdnDashboard.as_view(), name="front-end-dashboard"
     ),

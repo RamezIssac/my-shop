@@ -49,12 +49,12 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "reversion",
     "tabular_permissions",
-    "erp_framework.admin.jazzmin_integration",
+    # "erp_framework.admin.jazzmin_integration",
     "erp_framework.admin",
     # "erp_framework.activity",
     "erp_framework.reporting",
     "slick_reporting",
-    "jazzmin",
+    # "jazzmin",
     "django.contrib.admin",  # comes at the end because the theme is replaced
 ]
 

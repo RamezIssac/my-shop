@@ -25,6 +25,7 @@ class ExpensesStatement(ReportView):
 
 @register_report_view
 class ExpensesTotalStatement(ReportView):
+    date_field = "date"
     report_model = ExpenseTransaction
     base_model = Expense
     report_title = _("Expense Total Balances")
