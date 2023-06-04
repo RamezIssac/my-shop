@@ -81,8 +81,8 @@
             // data is the json response from the server
             // $elem is the jquery object of the element `[data-report-widget]` that the report is attached to.
 
-            console.log(data);
-            console.log($elem);
+            console.info(data);
+            console.info($elem);
             $elem.find('pre').text(JSON.stringify(data, null, 4));
         }
 

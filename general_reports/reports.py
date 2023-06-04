@@ -29,6 +29,7 @@ class ProfitabilityReport(ReportView):
     report_title = _("Total Profitability Report")
     report_model = Profitability  # None #ExpenseReportModel
     base_model = Profitability
+    # date_field = "date"
 
     group_by = "type"
 
@@ -47,6 +48,7 @@ class ProfitabilityReportMonthly(ReportView):
     report_model = Profitability  # None #ExpenseReportModel
     base_model = Profitability
     doc_type_field_name = "type"
+    date_field = "date"
 
     group_by = "type"
     # time_series_pattern = 'monthly'

@@ -206,6 +206,7 @@ class CustomCrossTabTotalField(TotalReportField):
 class ProductClientSalesCrossTab(ReportView):
     report_model = Sale
     base_model = Product
+    date_field = "date"
 
     report_title = "Product Client Sales Cross Tab"
 

@@ -55,6 +55,7 @@ class SalesTransaction(DocType):
 class ProductMovementStatement(ReportView):
     report_title = _("Product Movement Statement")
     report_model = ProductInOutDBView
+    date_field = "date"
     base_model = Product
 
     group_by = "product"
