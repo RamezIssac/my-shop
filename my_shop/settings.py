@@ -49,12 +49,12 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "reversion",
     "tabular_permissions",
-    # "erp_framework.admin.jazzmin_integration",
+    "erp_framework.admin.jazzmin_integration",
     "erp_framework.admin",
     # "erp_framework.activity",
     "erp_framework.reporting",
     "slick_reporting",
-    # "jazzmin",
+    "jazzmin",
     "django.contrib.admin",  # comes at the end because the theme is replaced
 ]
 
@@ -167,7 +167,7 @@ ERP_FRAMEWORK_SETTINGS = {
     "index_title": "My Shop dashboard",
     "index_template": "admin/custom_index.html",
     # "report_base_template": "request_analytics/base.html",
-    "admin_base_site_template": "request_analytics/base.html",
+    # "admin_base_site_template": "request_analytics/base.html",
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index", current_app="erp_framework_admin")
