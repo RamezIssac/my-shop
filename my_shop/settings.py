@@ -156,6 +156,11 @@ JAZZMIN_SETTINGS = {
     # Links to put along the top menu
     "topmenu_links": [
         {
+            "name": "Requests Dashboard",
+            "url": "/requests-dashboard/",
+            "new_window": False,
+        },
+        {
             "name": "Front end dashboard",
             "url": "/front-end-dashboard",
             "new_window": True,
@@ -168,6 +173,12 @@ ERP_FRAMEWORK_SETTINGS = {
     "index_template": "admin/custom_index.html",
     # "report_base_template": "request_analytics/base.html",
     # "admin_base_site_template": "request_analytics/base.html",
+    "sites": {
+        "requests-dashboard": {
+            "admin_base_site_template": "request_analytics/base.html",
+            "index_template": "request_analytics/index.html",
+        }
+    },
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("admin:index", current_app="erp_framework_admin")
