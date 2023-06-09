@@ -13,6 +13,7 @@ from .models import Purchase, ProductInOutDBView
 
 @register_report_view()
 class ProductAveragePrice(ReportView):
+    date_field = "date"
     report_title = _("Product Average Price")
     report_model = Purchase
 
