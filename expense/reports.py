@@ -43,6 +43,7 @@ class ExpensesTotalStatement(ReportView):
 class ExpenseMovementTimeComparison(ReportView):
     report_title = _("Expenses Monthly Movements")
     group_by = "expense"
+    date_field = "date"
     base_model = Expense
     time_series_pattern = "monthly"
     report_model = ExpenseTransaction
