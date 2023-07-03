@@ -1,5 +1,6 @@
 from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
+from slick_reporting.generator import Chart
 
 from erp_framework.reporting.registry import register_report_view
 from erp_framework.reporting.views import ReportView
@@ -72,7 +73,9 @@ class TotalProductSalesTimeSeries(ReportView):
     time_series_selector_default = "monthly"
 
     time_series_columns = [
-        SlickReportField.create(Sum, "value", verbose_name=_("Value"), name="value")
+        SlickReportField.create(
+            Sum, "value", verbose_name=_("Sales Value"), name="value"
+        )
     ]
 
     chart_settings = [
@@ -82,21 +85,28 @@ class TotalProductSalesTimeSeries(ReportView):
             "title_source": "type",
         },
         {
-            "title": "Total",
-            "engine_name": "chartsjs",
+            "title": "Total Sales Monthly (Column)",
+            # "engine_name": "chartsjs",
             "type": "column",
             "data_source": ["value"],
             "title_source": "type",
             "plot_total": True,
         },
-        {
-            "title": "Total",
-            "engine_name": "chartsjs",
-            "type": "pie",
-            "data_source": ["value"],
-            "title_source": "type",
-            "plot_total": True,
-        },
+        Chart(
+            _("Total Sales Monthly"),
+            Chart.PIE,
+            data_source=["value"],
+            title_source=["name"],
+            plot_total=True,
+        ),
+        # {
+        #     "title": "Total",
+        #     # "engine_name": "chartsjs",
+        #     "type": "pie",
+        #     "data_source": ["value"],
+        #     "title_source": "type",
+        #     "plot_total": True,
+        # },
     ]
 
 
