@@ -45,7 +45,8 @@ class Command(BaseCommand):
 
         # create sales, 10 per day from start of the year
 
-        start_date = datetime.datetime(2023, 1, 1)
+        start_date = datetime.datetime(datetime.datetime.today().year, 1, 1)
+
         end_date = datetime.datetime.now() + timedelta(days=1)
 
         for date in date_range(start_date, end_date):

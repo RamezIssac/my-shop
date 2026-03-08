@@ -31,12 +31,12 @@ class RequestLog(ListReportView):
         "user_agent",
         "user",
         "referer",
-        ("get_time_verbose", {"verbose_name": "Time"}),
+        # ("get_time_verbose", {"verbose_name": "Time"}),
         "response",
     ]
 
-    def get_time_verbose(self, obj):
-        return naturaltime(obj.time)
+    # def get_time_verbose(self, obj):
+    #     return naturaltime(obj.time)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
