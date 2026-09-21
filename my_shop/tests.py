@@ -6,7 +6,7 @@ import os
 import unittest
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase, override_settings
+from django.test import TestCase
 from django.conf import settings
 from django.utils.timezone import now
 
