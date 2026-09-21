@@ -1,12 +1,16 @@
 """
 Smoke tests for the deployment contract and the demo's key pages.
 """
+import datetime
 import os
 import unittest
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
 from django.conf import settings
+from django.utils.timezone import now
+
+from expense.models import Expense, ExpenseTransaction
 
 
 class SettingsContractTests(TestCase):
@@ -69,3 +73,29 @@ class PageRenderTests(TestCase):
         self.client.login(username="admin", password="pass")
         response = self.client.get("/reports/expense/expenses_daily/")
         self.assertEqual(response.status_code, 200)
+
+    def test_daily_report_data_endpoints(self):
+        """The showcased daily time-series reports must serve JSON data rows.
+
+        Regression: under slick-reporting 1.4 these endpoints 500 with
+        ImproperlyConfigured when the report class sets a time_series_pattern
+        without a date_field.
+        """
+        expense = Expense.objects.create(name="Operations")
+        ExpenseTransaction.objects.create(
+            number="EX-1", date=now(), expense=expense, value="10.00"
+        )
+        self.client.login(username="admin", password="pass")
+        params = {
+            "start_date": (now() - datetime.timedelta(days=7)).date().isoformat(),
+            "end_date": (now() + datetime.timedelta(days=1)).date().isoformat(),
+        }
+        for slug in ("expenses_daily", "expenses_daily_total"):
+            with self.subTest(slug=slug):
+                response = self.client.get(
+                    f"/reports/expense/{slug}/",
+                    params,
+                    HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+                )
+                self.assertEqual(response.status_code, 200)
+                self.assertTrue(response.json()["data"])
