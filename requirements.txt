@@ -1,11 +1,9 @@
 Django==5.2.17
-# Demo showcase packages (latest PyPI-published releases)
-django-erp-framework==1.5.2
-# NOTE: erp-framework 1.5.2 (latest published) fails to import with
-# slick-reporting >= 1.3.0 (MRO conflict on its unused
-# TimeSeriesSelectorReportView). 1.2.0 is the newest compatible
-# published release; do not bump until a new erp-framework releases.
-django-slick-reporting==1.2.0
+# Demo showcase packages (published releases)
+# erp-framework is pinned from its published git release tag: the PyPI
+# sdists (<=1.5.2) ship no templates/static, fixed upstream in v1.6.0.
+django-erp-framework @ git+https://github.com/RamezIssac/django-erp-framework.git@v1.6.0
+django-slick-reporting==1.4.0
 django-jazzmin==3.0.5
 # crispy stack required by slick-reporting / erp-framework
 django-crispy-forms==2.7

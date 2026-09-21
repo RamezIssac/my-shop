@@ -8,18 +8,18 @@
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_widget ExpensesTotalStatement %}
 
-        {% get_report base_model='purchase' report_slug='productmovementstatement' as productmovementstatement %}
+        {% get_report base_model='product' report_slug='productmovementstatement' as productmovementstatement %}
         {% get_widget productmovementstatement display_chart=False date_theme="last_week" %}
 
-        {% get_report base_model='sales' report_slug='ProductClientSalesCrossTab' as ProductClientSalesCrossTab %}
+        {% get_report base_model='product' report_slug='ProductClientSalesCrossTab' as ProductClientSalesCrossTab %}
         {% get_widget ProductClientSalesCrossTab extra_params="client_id=1&client_id=2&crosstab_compute_remainder=on"  %}
 
     </div>
     <div class="col-sm-6">
-        {% get_report base_model='general_reports' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
+        {% get_report base_model='profitability' report_slug='profitabilityreportmonthly' as profitabilityreportmonthly %}
         {% get_widget profitabilityreportmonthly display_table=False extra_params="time_series_pattern=monthly" chart_id="total-column" display_chart_selector=False %}
         <div class="">
-            {% get_report base_model='sales' report_slug='salelistreportview' as salelistreportview %}
+            {% get_report base_model='reports' report_slug='salelistreportview' as salelistreportview %}
             {% get_widget salelistreportview date_theme="last_week" %}
         </div>
 
