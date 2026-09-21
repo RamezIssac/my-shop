@@ -59,5 +59,7 @@ For deployment behind a proxy terminating HTTPS (e.g. Cloudflare),
 and `SECURE_PROXY_SSL_HEADER` / `USE_X_FORWARDED_HOST` are already set.
 
 For production: `pip install -r requirements.txt`, write a real `.env`,
-then `python manage.py migrate && python manage.py collectstatic` and serve
-via `my_shop.wsgi` (or `my_shop.asgi`).
+then `python manage.py migrate && python manage.py collectstatic`. The
+serving layer is provided by the fleet host: rambo deploys this app with
+uWSGI (wsgi module `my_shop.wsgi`) and Daphne (asgi `my_shop.asgi`), the
+same as the other fleet apps — no WSGI/ASGI server is pinned here.

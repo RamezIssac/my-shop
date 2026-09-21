@@ -1,6 +1,9 @@
 """
 Smoke tests for the deployment contract and the demo's key pages.
 """
+import os
+import unittest
+
 from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
 from django.conf import settings
@@ -24,8 +27,10 @@ class SettingsContractTests(TestCase):
             [f"https://{host}" for host in env_hosts if host and host != "*"],
         )
 
+    @unittest.skipIf(
+        os.environ.get("POSTGRES_DB"), "POSTGRES_DB set: checkout uses Postgres"
+    )
     def test_sqlite_fallback_when_postgres_db_unset(self):
-        # The test environment does not set POSTGRES_DB
         self.assertEqual(
             settings.DATABASES["default"]["ENGINE"], "django.db.backends.sqlite3"
         )
