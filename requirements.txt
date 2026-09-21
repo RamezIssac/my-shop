@@ -1,9 +1,22 @@
-Django>=4.2,<4.3
-django-jazzmin
-# django-erp-framework
-crispy_bootstrap4
-# django-slick-reporting
--e git+https://github.com/RamezIssac/django-erp-framework.git@develop#egg=django-erp-framework
--e git+https://github.com/ra-systems/django-slick-reporting.git@develop#egg=django-slick-reporting
-django-request
-django-ipware
+Django==5.2.17
+# Demo showcase packages (latest PyPI-published releases)
+django-erp-framework==1.5.2
+# NOTE: erp-framework 1.5.2 (latest published) fails to import with
+# slick-reporting >= 1.3.0 (MRO conflict on its unused
+# TimeSeriesSelectorReportView). 1.2.0 is the newest compatible
+# published release; do not bump until a new erp-framework releases.
+django-slick-reporting==1.2.0
+django-jazzmin==3.0.5
+# crispy stack required by slick-reporting / erp-framework
+django-crispy-forms==2.7
+crispy-bootstrap4==2026.2
+# apps used by the project
+django-request==1.7.1
+django-ipware==7.0.1
+django-crequest==2018.5.11
+django-reversion==6.3.0
+django-tabular-permissions==2.9.3
+# deployment contract
+psycopg[binary]==3.3.6
+redis==8.1.0
+django-environ==0.14.0
