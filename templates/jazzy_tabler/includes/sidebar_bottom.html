@@ -1,0 +1,7 @@
+{% load i18n erp_reporting_tags %}
+{# Local override of erp_framework.admin.jazzy_tabler_integration's template:
+   the shipped version loads `erp_tags`, a library that does not exist in
+   erp-framework 1.6.0, which makes every admin page raise TemplateSyntaxError.
+   Only `render_reports_menu` (from erp_reporting_tags) is used here. #}
+
+{% render_reports_menu template_name="jazzy_tabler/report_menu.html" %}

@@ -4,7 +4,7 @@ Django==5.2.17
 # sdists (<=1.5.2) ship no templates/static, fixed upstream in v1.6.0.
 django-erp-framework @ git+https://github.com/RamezIssac/django-erp-framework.git@v1.6.0
 django-slick-reporting==1.4.0
-django-jazzmin==3.0.5
+django-jazzy-tabler>=0.1.1
 # crispy stack required by slick-reporting / erp-framework
 django-crispy-forms==2.7
 crispy-bootstrap4==2026.2

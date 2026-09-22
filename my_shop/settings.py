@@ -60,12 +60,13 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "reversion",
     "tabular_permissions",
-    "erp_framework.admin.jazzmin_integration",
+    "erp_framework.admin.jazzy_tabler_integration",
     "erp_framework.admin",
     # "erp_framework.activity",
     "erp_framework.reporting",
     "slick_reporting",
-    "jazzmin",
+    "my_shop",
+    "jazzy_tabler",
     "django.contrib.admin",  # comes at the end because the theme is replaced
 ]
 
@@ -189,9 +190,26 @@ SLICK_REPORTING_DEFAULT_CHARTS_ENGINE = "highcharts"
 
 # RA_ADMIN_INDEX_PAGE = "admin/custom_index.html"
 # RA_ADMIN_INDEX_TITLE = "My Shop"
-JAZZMIN_SETTINGS = {
+JAZZY_SETTINGS = {
+    "site_title": "My Shop ERP",
+    "site_header": "My Shop ERP System",
     "site_brand": "My Shop ERP System",
     "welcome_sign": "Welcome to Django ERP framework demo site. \n Use Username:`test` Password:`testuser123` to login",
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.group": "fas fa-users",
+        "sales": "fas fa-shopping-cart",
+        "sales.sale": "fas fa-shopping-cart",
+        "sales.client": "fas fa-user-tie",
+        "sales.product": "fas fa-box",
+        "purchase": "fas fa-truck",
+        "purchase.purchase": "fas fa-truck",
+        "expense": "fas fa-money-bill-wave",
+        "expense.expense": "fas fa-money-bill-wave",
+        "expense.expensetransaction": "fas fa-receipt",
+    },
+    "changeform_format": "horizontal_tabs",
     # Links to put along the top menu
     "topmenu_links": [
         {
@@ -205,6 +223,13 @@ JAZZMIN_SETTINGS = {
             "new_window": True,
         },
     ],
+}
+
+JAZZY_UI_TWEAKS = {
+    "navbar": "light",
+    "sidebar": "dark",
+    "default_theme_mode": "light",
+    "accent_color": "primary",
 }
 
 ERP_FRAMEWORK_SETTINGS = {
