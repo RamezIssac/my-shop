@@ -6,11 +6,12 @@ This file is the project's committed home for project-intrinsic agent knowledge:
 
 ## Project notes
 
-- Demo for django-erp-framework + django-slick-reporting + django-jazzmin (jazzmin is part of the showcase; do not swap the theme).
+- Demo for django-erp-framework + django-slick-reporting + django-jazzy-tabler (the theme is part of the showcase; jazzy-tabler replaced jazzmin).
 - `requirements.txt`: erp-framework is pinned from the git release tag `v1.6.0`, not PyPI — PyPI sdists up to 1.5.2 ship no templates/static, so the erp pages 500 without them. Move back to a PyPI pin only after verifying a release ships its templates.
+- erp-framework v1.6.0's `jazzy_tabler_integration` ships a `jazzy_tabler/includes/sidebar_bottom.html` that loads a nonexistent `erp_tags` library; `templates/jazzy_tabler/includes/sidebar_bottom.html` in this repo overrides it. Drop the override only after upstream fixes the load line.
 - Report registry namespaces come from `base_model._meta.model_name` (or the module name when no `base_model`), so `{% get_report base_model=... %}` in `templates/` must use that namespace (e.g. `product.productmovementstatement`, not `purchase...`). Inspect `erp_framework.reporting.registry.report_registry._store` for the live keys.
 - Settings follow the deployment contract documented in `README.md` / `.env.example`: env-driven via django-environ, sqlite fallback when `POSTGRES_DB` is unset, behind-proxy HTTPS settings always on.
-- Seed the demo with `python manage.py create_entries && python manage.py create_purchase_entries`; smoke tests: `python manage.py test` (see `my_shop/tests.py`).
+- Seed the demo with `python manage.py seed_demo` (creates the `test`/`testuser123` superuser, then wraps `create_entries` + `create_purchase_entries`); smoke tests: `python manage.py test` (see `my_shop/tests.py`).
 
 ## Maintaining this file
 

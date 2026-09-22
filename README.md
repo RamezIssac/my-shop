@@ -3,7 +3,7 @@
 A Django ERP framework example project — the public demo for
 [django-erp-framework](https://github.com/RamezIssac/django-erp-framework),
 [django-slick-reporting](https://github.com/ra-systems/django-slick-reporting)
-and [django-jazzmin](https://github.com/farridav/django-jazzmin).
+and [django-jazzy-tabler](https://pypi.org/project/django-jazzy-tabler/).
 
 This is the code for the demo site at my-shop.django-erp.com.
 
@@ -18,11 +18,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 python manage.py migrate
-python manage.py create_entries
-python manage.py create_purchase_entries
-python manage.py createsuperuser
+python manage.py seed_demo
 python manage.py runserver
 ```
+
+`seed_demo` creates the demo login and all sample data (it wraps the
+`create_entries` / `create_purchase_entries` app commands). Log in with
+username `test`, password `testuser123` — no `createsuperuser` needed.
 
 No `.env` is needed for local development: without one you get DEBUG off,
 an sqlite database, `ALLOWED_HOSTS=127.0.0.1,localhost` and a built-in
@@ -30,7 +32,7 @@ development `SECRET_KEY`.
 
 Then browse:
 
-* `/` — the ERP admin site (jazzmin-themed) with the dashboard and reports
+* `/` — the ERP admin site (jazzy-tabler-themed) with the dashboard and reports
 * `/admin/` — the stock Django admin
 * `/requests-dashboard/` — request analytics reports
 * `/front-end-dashboard/` — a sample front-end dashboard page
