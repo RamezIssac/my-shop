@@ -86,6 +86,7 @@ class ExpenseMovementDaily(ReportView):
     report_title = _("Expenses Daily")
     report_slug = "expenses_daily"
     group_by = "expense"
+    date_field = "date"
     time_series_pattern = "daily"
     time_series_columns = ["__total__"]
     doc_type_field_name = "type"
@@ -145,6 +146,7 @@ class ExpenseMovementDaily2(ReportView):
     report_title = _("Expenses Daily total")
     report_slug = "expenses_daily_total"
     # group_by = 'type'
+    date_field = "date"
     time_series_pattern = "daily"
     time_series_columns = ["__total__"]
 

@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
+from django.utils import timezone
 
 from expense.models import Expense, ExpenseTransaction
 from purchase.models import Purchase
@@ -24,8 +25,10 @@ class Command(BaseCommand):
         # create clients
         products_ids = list(Product.objects.values_list("pk", flat=True))
 
-        start_date = datetime.datetime(datetime.datetime.today().year, 1, 1)
-        end_date = datetime.datetime.now() + timedelta(days=1)
+        start_date = timezone.make_aware(
+            datetime.datetime(datetime.datetime.today().year, 1, 1)
+        )
+        end_date = timezone.make_aware(datetime.datetime.now() + timedelta(days=1))
 
         for date in date_range(start_date, end_date):
             for i in range(1, 10):

@@ -12,7 +12,7 @@
         {% get_report base_model='expense' report_slug='ExpensesTotalStatement' as ExpensesTotalStatement %}
         {% get_widget ExpensesTotalStatement %}
 
-        {% get_report base_model='purchase' report_slug='productmovementstatement' as productmovementstatement %}
+        {% get_report base_model='product' report_slug='productmovementstatement' as productmovementstatement %}
         {% get_widget productmovementstatement display_chart=True date_theme="last_week" display_chart_selector=False %}
 
 
