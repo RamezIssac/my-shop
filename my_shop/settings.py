@@ -177,7 +177,7 @@ MEDIA_ROOT = env("MEDIA_ROOT")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Behind-proxy (Cloudflare / rambo) HTTPS settings
+# Behind-proxy (Cloudflare / reverse proxy) HTTPS settings
 CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS if host and host != "*"]
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
